@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,13 +15,17 @@ namespace Tank_game
     public partial class Form1 : Form
     {
         //Components' speeds
-        int tankSpeed = 6;
+        int tankSpeed = 4;
         int bulletSpeed = 10;
-        string bulletDirection = "up";
+        string bulletDirection = "right";    // Set to "up"
+        string blueTankDirection = "right";
 
         //Player scores
         int redTankScore = 0;
         int blueTankScore = 0;
+
+        //List of bullets
+        List<Rectangle> bulletList = new List<Rectangle>();
 
         //Declaring moving options
         bool wDown = false;
@@ -151,49 +156,96 @@ namespace Tank_game
                         break;
                     case "right":
                         bullet.Image = Resources.bullet_horizontal;
-                        bullet.Location = new Point(blueTank.Left + bullet.Width + 10, blueTank.Top + bullet.Height + 9);
                         bullet.Left += bulletSpeed;
                         break;
                 }
-                if (bullet.Left > this.Width)
-                {
-
-                    bullet.Location = new Point(blueTank.Left + bullet.Width, blueTank.Top + bullet.Height);
-                    bullet.Visible = false;
-                    shooting = false;
-                }
-                if (bullet.Left < 0)
-                {
-                    bullet.Location = new Point(blueTank.Left, blueTank.Top);
-                    bullet.Visible = false;
-                    shooting = false;
-                }
-                if (bullet.Top > this.Height)
-                {
-                    bullet.Location = new Point(blueTank.Left, blueTank.Top);
-                    bullet.Visible = false;
-                    shooting = false;
-                }
-                if (bullet.Top < 0)
-                {
-                    bullet.Location = new Point(blueTank.Left, blueTank.Top);
-                    bullet.Visible = false;
-                    shooting = false;
-                }
-
             }
 
-            Rectangle box1Bounds = new Rectangle(box1.Bounds.X, box1.Bounds.Y, box1.Width, box1.Height);
-            Rectangle box2Bounds = new Rectangle(box2.Bounds.X, box2.Bounds.Y, box2.Width, box2.Height);
-            Rectangle box3Bounds = new Rectangle(box3.Bounds.X, box3.Bounds.Y, box3.Width, box3.Height);
-            Rectangle box4Bounds = new Rectangle(box4.Bounds.X, box4.Bounds.Y, box4.Width, box4.Height);
-            Rectangle box5Bounds = new Rectangle(box5.Bounds.X, box5.Bounds.Y, box5.Width, box5.Height);
-            Rectangle box6Bounds = new Rectangle(box6.Bounds.X, box6.Bounds.Y, box6.Width, box6.Height);
-            Rectangle tripleBox1Bounds = new Rectangle(tripleBox1.Bounds.X, tripleBox1.Bounds.Y, tripleBox1.Width, tripleBox1.Height);
-            Rectangle tripleBox2Bounds = new Rectangle(tripleBox2.Bounds.X, tripleBox2.Bounds.Y, tripleBox2.Width, tripleBox2.Height);
-            Rectangle blueTankBounds = new Rectangle(blueTank.Bounds.X, blueTank.Bounds.Y, blueTank.Width, blueTank.Height);
-            Rectangle redTankBounds = new Rectangle(redTank.Bounds.X, redTank.Bounds.Y, redTank.Width, redTank.Height);
+            switch (blueTankDirection)
+            {
+                case "up":
+                    if (blueTank.Bounds.IntersectsWith(box1.Bounds) || blueTank.Bounds.IntersectsWith(box2.Bounds) || blueTank.Bounds.IntersectsWith(box3.Bounds)
+                    || blueTank.Bounds.IntersectsWith(box4.Bounds) || blueTank.Bounds.IntersectsWith(box5.Bounds) || blueTank.Bounds.IntersectsWith(box6.Bounds)
+                    || blueTank.Bounds.IntersectsWith(tripleBox1.Bounds) || blueTank.Bounds.IntersectsWith(tripleBox2.Bounds))
+                    {
+                        blueTank.Top += 8;
+                    }
+                    break;
+                case "down":
+                    if (blueTank.Bounds.IntersectsWith(box1.Bounds) || blueTank.Bounds.IntersectsWith(box2.Bounds) || blueTank.Bounds.IntersectsWith(box3.Bounds)
+                    || blueTank.Bounds.IntersectsWith(box4.Bounds) || blueTank.Bounds.IntersectsWith(box5.Bounds) || blueTank.Bounds.IntersectsWith(box6.Bounds)
+                    || blueTank.Bounds.IntersectsWith(tripleBox1.Bounds) || blueTank.Bounds.IntersectsWith(tripleBox2.Bounds))
+                    {
+                        blueTank.Top -= 8;
+                    }
+                    break;
+                case "left":
+                    if (blueTank.Bounds.IntersectsWith(box1.Bounds) || blueTank.Bounds.IntersectsWith(box2.Bounds) || blueTank.Bounds.IntersectsWith(box3.Bounds)
+                    || blueTank.Bounds.IntersectsWith(box4.Bounds) || blueTank.Bounds.IntersectsWith(box5.Bounds) || blueTank.Bounds.IntersectsWith(box6.Bounds)
+                    || blueTank.Bounds.IntersectsWith(tripleBox1.Bounds) || blueTank.Bounds.IntersectsWith(tripleBox2.Bounds))
+                    {
+                        blueTank.Left += 8;
+                    }
+                    break;
+                case "right":
+                    if (blueTank.Bounds.IntersectsWith(box1.Bounds) || blueTank.Bounds.IntersectsWith(box2.Bounds) || blueTank.Bounds.IntersectsWith(box3.Bounds)
+                    || blueTank.Bounds.IntersectsWith(box4.Bounds) || blueTank.Bounds.IntersectsWith(box5.Bounds) || blueTank.Bounds.IntersectsWith(box6.Bounds)
+                    || blueTank.Bounds.IntersectsWith(tripleBox1.Bounds) || blueTank.Bounds.IntersectsWith(tripleBox2.Bounds))
+                    {
+                        blueTank.Left -= 8;
+                    }
+                    break;
+            }
+            //Remove when bullets go out the screen
+            if (bullet.Left > this.Width)
+            {
 
+                bullet.Location = new Point(blueTank.Left + bullet.Width, blueTank.Top + bullet.Height);
+                bullet.Visible = false;
+                shooting = false;
+            }
+            if (bullet.Left < 0)
+            {
+                bullet.Location = new Point(blueTank.Left, blueTank.Top);
+                bullet.Visible = false;
+                shooting = false;
+            }
+            if (bullet.Top > this.Height)
+            {
+                bullet.Location = new Point(blueTank.Left, blueTank.Top);
+                bullet.Visible = false;
+                shooting = false;
+            }
+            if (bullet.Top < 0)
+            {
+                bullet.Location = new Point(blueTank.Left, blueTank.Top);
+                bullet.Visible = false;
+                shooting = false;
+            }
+
+            int dx = 0, dy = 0;
+
+            if (wDown) dy -= 1;
+            if (sDown) dy += 1;
+            if (aDown) dx -= 1;
+            if (dDown) dx += 1;
+
+            // Normalize diagonal movement so it isn't faster
+            if (dx != 0 && dy != 0)
+            {
+                double diagonal = 1 / Math.Sqrt(2);
+                dx = (int)(dx * diagonal * tankSpeed);
+                dy = (int)(dy * diagonal * tankSpeed);
+            }
+            else
+            {
+                dx *= tankSpeed;
+                dy *= tankSpeed;
+            }
+
+            // Move the tank
+            blueTank.Left += dx;
+            blueTank.Top += dy;
             Refresh();
         }
 
@@ -202,15 +254,23 @@ namespace Tank_game
             switch (e.KeyCode)
             {
                 case Keys.W:
+                    blueTankDirection = "up";
+                    bulletDirection = "up";
                     wDown = true;
                     break;
                 case Keys.S:
+                    blueTankDirection = "down";
+                    bulletDirection = "down";
                     sDown = true;
                     break;
                 case Keys.A:
+                    blueTankDirection = "left";
+                    bulletDirection = "left";
                     aDown = true;
                     break;
                 case Keys.D:
+                    blueTankDirection = "right";
+                    bulletDirection = "right";
                     dDown = true;
                     break;
                 case Keys.Up:
@@ -226,33 +286,9 @@ namespace Tank_game
                     rightArrowDown = true;
                     break;
                 case Keys.F:
-                    if (!shooting)
-                    {
-                        if (dDown == true)
-                        {
-                            bullet.Visible = true;
-                            shooting = true;
-                            bulletDirection = "right";
-                        }
-                        if (sDown == true)
-                        {
-                            bullet.Visible = true;
-                            shooting = true;
-                            bulletDirection = "down";
-                        }
-                        if (aDown == true)
-                        {
-                            bullet.Visible = true;
-                            shooting = true;
-                            bulletDirection = "left";
-                        }
-                        if (wDown == true)
-                        {
-                            bullet.Visible = true;
-                            shooting = true;
-                            bulletDirection = "up";
-                        }
-                    }
+                    bullet.Visible = true;
+                    shooting = true;
+                    
                     break;
                 case Keys.P:
                     shooting2 = true;

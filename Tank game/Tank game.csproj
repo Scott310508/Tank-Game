@@ -96,18 +96,6 @@
     <None Include="Resources\red_tank.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\blue_tank_left.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\blue_tank_down.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\blue_tank_right.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\blue_tank_up.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\red_tank_down.png" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +124,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bullet_horizontal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blue_tank_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blue_tank_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blue_tank_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blue_tank_right.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

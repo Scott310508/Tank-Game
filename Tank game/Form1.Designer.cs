@@ -117,15 +117,15 @@
             this.redTank.Image = ((System.Drawing.Image)(resources.GetObject("redTank.Image")));
             this.redTank.Location = new System.Drawing.Point(1159, 296);
             this.redTank.Name = "redTank";
-            this.redTank.Size = new System.Drawing.Size(53, 42);
-            this.redTank.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.redTank.Size = new System.Drawing.Size(46, 35);
+            this.redTank.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.redTank.TabIndex = 13;
             this.redTank.TabStop = false;
             // 
             // blueTank
             // 
             this.blueTank.Image = ((System.Drawing.Image)(resources.GetObject("blueTank.Image")));
-            this.blueTank.Location = new System.Drawing.Point(30, 296);
+            this.blueTank.Location = new System.Drawing.Point(31, 296);
             this.blueTank.Name = "blueTank";
             this.blueTank.Size = new System.Drawing.Size(54, 42);
             this.blueTank.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
