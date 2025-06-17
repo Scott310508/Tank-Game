@@ -65,7 +65,7 @@ namespace Tank_game.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _3_boxes {
             get {
-                object obj = ResourceManager.GetObject("3_boxes", resourceCulture);
+                object obj = ResourceManager.GetObject("_3_boxes", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,6 +133,16 @@ namespace Tank_game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap box1 {
+            get {
+                object obj = ResourceManager.GetObject("box1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bullet_horizontal {
             get {
                 object obj = ResourceManager.GetObject("bullet_horizontal", resourceCulture);
@@ -146,6 +156,16 @@ namespace Tank_game.Properties {
         internal static System.Drawing.Bitmap bullet_vertical {
             get {
                 object obj = ResourceManager.GetObject("bullet_vertical", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fast_shooting_rate {
+            get {
+                object obj = ResourceManager.GetObject("fast_shooting_rate", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -186,6 +206,26 @@ namespace Tank_game.Properties {
         internal static System.Drawing.Bitmap red_tank_up {
             get {
                 object obj = ResourceManager.GetObject("red_tank_up", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shield {
+            get {
+                object obj = ResourceManager.GetObject("shield", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap speed_boost {
+            get {
+                object obj = ResourceManager.GetObject("speed_boost", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

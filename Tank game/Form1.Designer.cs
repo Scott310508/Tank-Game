@@ -34,28 +34,30 @@
             this.startButton = new System.Windows.Forms.Button();
             this.quitButton = new System.Windows.Forms.Button();
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
+            this.power_ups = new System.Windows.Forms.PictureBox();
+            this.box6 = new System.Windows.Forms.PictureBox();
+            this.tripleBox1 = new System.Windows.Forms.PictureBox();
             this.bullet = new System.Windows.Forms.PictureBox();
             this.redTank = new System.Windows.Forms.PictureBox();
             this.blueTank = new System.Windows.Forms.PictureBox();
-            this.box6 = new System.Windows.Forms.PictureBox();
             this.box5 = new System.Windows.Forms.PictureBox();
-            this.box3 = new System.Windows.Forms.PictureBox();
             this.box4 = new System.Windows.Forms.PictureBox();
             this.box1 = new System.Windows.Forms.PictureBox();
             this.tripleBox2 = new System.Windows.Forms.PictureBox();
             this.box2 = new System.Windows.Forms.PictureBox();
-            this.tripleBox1 = new System.Windows.Forms.PictureBox();
+            this.box3 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.power_ups)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.box6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tripleBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bullet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.redTank)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.blueTank)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.box6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.box5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.box3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.box4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.box1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tripleBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.box2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tripleBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.box3)).BeginInit();
             this.SuspendLayout();
             // 
             // menu_box
@@ -101,6 +103,42 @@
             this.gameTimer.Interval = 20;
             this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
             // 
+            // power_ups
+            // 
+            this.power_ups.BackColor = System.Drawing.Color.Transparent;
+            this.power_ups.Image = global::Tank_game.Properties.Resources.speed_boost;
+            this.power_ups.Location = new System.Drawing.Point(1220, 75);
+            this.power_ups.Name = "power_ups";
+            this.power_ups.Size = new System.Drawing.Size(42, 43);
+            this.power_ups.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.power_ups.TabIndex = 17;
+            this.power_ups.TabStop = false;
+            this.power_ups.Visible = false;
+            // 
+            // box6
+            // 
+            this.box6.Image = global::Tank_game.Properties.Resources.box1;
+            this.box6.Location = new System.Drawing.Point(730, 457);
+            this.box6.Name = "box6";
+            this.box6.Size = new System.Drawing.Size(65, 64);
+            this.box6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.box6.TabIndex = 16;
+            this.box6.TabStop = false;
+            this.box6.Visible = false;
+            // 
+            // tripleBox1
+            // 
+            this.tripleBox1.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.tripleBox1.Image = ((System.Drawing.Image)(resources.GetObject("tripleBox1.Image")));
+            this.tripleBox1.Location = new System.Drawing.Point(236, 217);
+            this.tripleBox1.Name = "tripleBox1";
+            this.tripleBox1.Size = new System.Drawing.Size(66, 203);
+            this.tripleBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.tripleBox1.TabIndex = 15;
+            this.tripleBox1.TabStop = false;
+            this.tripleBox1.UseWaitCursor = true;
+            this.tripleBox1.Visible = false;
+            // 
             // bullet
             // 
             this.bullet.Image = global::Tank_game.Properties.Resources.bullet_horizontal;
@@ -114,38 +152,29 @@
             // 
             // redTank
             // 
-            this.redTank.Image = ((System.Drawing.Image)(resources.GetObject("redTank.Image")));
+            this.redTank.Image = global::Tank_game.Properties.Resources.red_tank_left;
             this.redTank.Location = new System.Drawing.Point(1159, 296);
             this.redTank.Name = "redTank";
-            this.redTank.Size = new System.Drawing.Size(46, 35);
-            this.redTank.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.redTank.Size = new System.Drawing.Size(43, 35);
+            this.redTank.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.redTank.TabIndex = 13;
             this.redTank.TabStop = false;
+            this.redTank.Visible = false;
             // 
             // blueTank
             // 
-            this.blueTank.Image = ((System.Drawing.Image)(resources.GetObject("blueTank.Image")));
+            this.blueTank.Image = global::Tank_game.Properties.Resources.blue_tank_right;
             this.blueTank.Location = new System.Drawing.Point(31, 296);
             this.blueTank.Name = "blueTank";
-            this.blueTank.Size = new System.Drawing.Size(54, 42);
+            this.blueTank.Size = new System.Drawing.Size(43, 35);
             this.blueTank.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.blueTank.TabIndex = 12;
             this.blueTank.TabStop = false;
-            // 
-            // box6
-            // 
-            this.box6.Image = global::Tank_game.Properties.Resources.box;
-            this.box6.Location = new System.Drawing.Point(730, 459);
-            this.box6.Name = "box6";
-            this.box6.Size = new System.Drawing.Size(65, 64);
-            this.box6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.box6.TabIndex = 11;
-            this.box6.TabStop = false;
-            this.box6.Visible = false;
+            this.blueTank.Visible = false;
             // 
             // box5
             // 
-            this.box5.Image = global::Tank_game.Properties.Resources.box;
+            this.box5.Image = ((System.Drawing.Image)(resources.GetObject("box5.Image")));
             this.box5.Location = new System.Drawing.Point(399, 540);
             this.box5.Name = "box5";
             this.box5.Size = new System.Drawing.Size(65, 64);
@@ -154,20 +183,9 @@
             this.box5.TabStop = false;
             this.box5.Visible = false;
             // 
-            // box3
-            // 
-            this.box3.Image = global::Tank_game.Properties.Resources.box;
-            this.box3.Location = new System.Drawing.Point(572, 239);
-            this.box3.Name = "box3";
-            this.box3.Size = new System.Drawing.Size(65, 64);
-            this.box3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.box3.TabIndex = 9;
-            this.box3.TabStop = false;
-            this.box3.Visible = false;
-            // 
             // box4
             // 
-            this.box4.Image = global::Tank_game.Properties.Resources.box;
+            this.box4.Image = ((System.Drawing.Image)(resources.GetObject("box4.Image")));
             this.box4.Location = new System.Drawing.Point(634, 296);
             this.box4.Name = "box4";
             this.box4.Size = new System.Drawing.Size(67, 69);
@@ -178,7 +196,7 @@
             // 
             // box1
             // 
-            this.box1.Image = global::Tank_game.Properties.Resources.box;
+            this.box1.Image = ((System.Drawing.Image)(resources.GetObject("box1.Image")));
             this.box1.Location = new System.Drawing.Point(343, 85);
             this.box1.Name = "box1";
             this.box1.Size = new System.Drawing.Size(67, 69);
@@ -189,10 +207,10 @@
             // 
             // tripleBox2
             // 
-            this.tripleBox2.Image = global::Tank_game.Properties.Resources._3_boxes;
+            this.tripleBox2.Image = ((System.Drawing.Image)(resources.GetObject("tripleBox2.Image")));
             this.tripleBox2.Location = new System.Drawing.Point(949, 217);
             this.tripleBox2.Name = "tripleBox2";
-            this.tripleBox2.Size = new System.Drawing.Size(67, 204);
+            this.tripleBox2.Size = new System.Drawing.Size(66, 203);
             this.tripleBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.tripleBox2.TabIndex = 6;
             this.tripleBox2.TabStop = false;
@@ -200,7 +218,7 @@
             // 
             // box2
             // 
-            this.box2.Image = global::Tank_game.Properties.Resources.box;
+            this.box2.Image = ((System.Drawing.Image)(resources.GetObject("box2.Image")));
             this.box2.Location = new System.Drawing.Point(730, 75);
             this.box2.Name = "box2";
             this.box2.Size = new System.Drawing.Size(67, 69);
@@ -209,16 +227,16 @@
             this.box2.TabStop = false;
             this.box2.Visible = false;
             // 
-            // tripleBox1
+            // box3
             // 
-            this.tripleBox1.Image = global::Tank_game.Properties.Resources._3_boxes;
-            this.tripleBox1.Location = new System.Drawing.Point(236, 217);
-            this.tripleBox1.Name = "tripleBox1";
-            this.tripleBox1.Size = new System.Drawing.Size(67, 204);
-            this.tripleBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.tripleBox1.TabIndex = 4;
-            this.tripleBox1.TabStop = false;
-            this.tripleBox1.Visible = false;
+            this.box3.Image = ((System.Drawing.Image)(resources.GetObject("box3.Image")));
+            this.box3.Location = new System.Drawing.Point(572, 239);
+            this.box3.Name = "box3";
+            this.box3.Size = new System.Drawing.Size(65, 64);
+            this.box3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.box3.TabIndex = 9;
+            this.box3.TabStop = false;
+            this.box3.Visible = false;
             // 
             // Form1
             // 
@@ -226,38 +244,39 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(221)))), ((int)(((byte)(119)))));
             this.ClientSize = new System.Drawing.Size(1284, 653);
+            this.Controls.Add(this.power_ups);
+            this.Controls.Add(this.box6);
+            this.Controls.Add(this.tripleBox1);
             this.Controls.Add(this.bullet);
             this.Controls.Add(this.redTank);
             this.Controls.Add(this.blueTank);
-            this.Controls.Add(this.box6);
             this.Controls.Add(this.box5);
-            this.Controls.Add(this.box3);
             this.Controls.Add(this.box4);
             this.Controls.Add(this.box1);
             this.Controls.Add(this.tripleBox2);
             this.Controls.Add(this.box2);
-            this.Controls.Add(this.tripleBox1);
             this.Controls.Add(this.quitButton);
             this.Controls.Add(this.startButton);
+            this.Controls.Add(this.box3);
             this.Controls.Add(this.menu_box);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Tank Game";
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
+            ((System.ComponentModel.ISupportInitialize)(this.power_ups)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.box6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tripleBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bullet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.redTank)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.blueTank)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.box6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.box5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.box3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.box4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.box1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tripleBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.box2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tripleBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.box3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,18 +287,19 @@
         private System.Windows.Forms.Label menu_box;
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.Button quitButton;
-        private System.Windows.Forms.PictureBox tripleBox1;
         private System.Windows.Forms.PictureBox tripleBox2;
         private System.Windows.Forms.PictureBox box2;
         private System.Windows.Forms.PictureBox box1;
         private System.Windows.Forms.PictureBox box4;
         private System.Windows.Forms.PictureBox box3;
         private System.Windows.Forms.PictureBox box5;
-        private System.Windows.Forms.PictureBox box6;
         private System.Windows.Forms.Timer gameTimer;
         private System.Windows.Forms.PictureBox blueTank;
         private System.Windows.Forms.PictureBox redTank;
         private System.Windows.Forms.PictureBox bullet;
+        private System.Windows.Forms.PictureBox tripleBox1;
+        private System.Windows.Forms.PictureBox box6;
+        private System.Windows.Forms.PictureBox power_ups;
     }
 }
 
