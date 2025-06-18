@@ -46,6 +46,11 @@
             this.tripleBox2 = new System.Windows.Forms.PictureBox();
             this.box2 = new System.Windows.Forms.PictureBox();
             this.box3 = new System.Windows.Forms.PictureBox();
+            this.powerUps_Timer = new System.Windows.Forms.Timer(this.components);
+            this.blueTankHealthLabel = new System.Windows.Forms.Label();
+            this.redTankHealthLabel = new System.Windows.Forms.Label();
+            this.blueTankHealth = new System.Windows.Forms.PictureBox();
+            this.redTankHealth = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.power_ups)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.box6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tripleBox1)).BeginInit();
@@ -58,6 +63,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.tripleBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.box2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.box3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.blueTankHealth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.redTankHealth)).BeginInit();
             this.SuspendLayout();
             // 
             // menu_box
@@ -238,12 +245,70 @@
             this.box3.TabStop = false;
             this.box3.Visible = false;
             // 
+            // powerUps_Timer
+            // 
+            this.powerUps_Timer.Enabled = true;
+            this.powerUps_Timer.Interval = 20000;
+            this.powerUps_Timer.Tick += new System.EventHandler(this.powerUps_Timer_Tick);
+            // 
+            // blueTankHealthLabel
+            // 
+            this.blueTankHealthLabel.AutoSize = true;
+            this.blueTankHealthLabel.BackColor = System.Drawing.Color.Transparent;
+            this.blueTankHealthLabel.Font = new System.Drawing.Font("Pixelify Sans Medium", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.blueTankHealthLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.blueTankHealthLabel.Location = new System.Drawing.Point(12, 12);
+            this.blueTankHealthLabel.Name = "blueTankHealthLabel";
+            this.blueTankHealthLabel.Size = new System.Drawing.Size(138, 37);
+            this.blueTankHealthLabel.TabIndex = 18;
+            this.blueTankHealthLabel.Text = "Player 1";
+            this.blueTankHealthLabel.Visible = false;
+            // 
+            // redTankHealthLabel
+            // 
+            this.redTankHealthLabel.AutoSize = true;
+            this.redTankHealthLabel.BackColor = System.Drawing.Color.Transparent;
+            this.redTankHealthLabel.Font = new System.Drawing.Font("Pixelify Sans Medium", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.redTankHealthLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.redTankHealthLabel.Location = new System.Drawing.Point(1091, 12);
+            this.redTankHealthLabel.Name = "redTankHealthLabel";
+            this.redTankHealthLabel.Size = new System.Drawing.Size(144, 37);
+            this.redTankHealthLabel.TabIndex = 19;
+            this.redTankHealthLabel.Text = "Player 2";
+            this.redTankHealthLabel.Visible = false;
+            // 
+            // blueTankHealth
+            // 
+            this.blueTankHealth.Image = global::Tank_game.Properties.Resources._5_hearts;
+            this.blueTankHealth.Location = new System.Drawing.Point(167, 12);
+            this.blueTankHealth.Name = "blueTankHealth";
+            this.blueTankHealth.Size = new System.Drawing.Size(144, 34);
+            this.blueTankHealth.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.blueTankHealth.TabIndex = 20;
+            this.blueTankHealth.TabStop = false;
+            this.blueTankHealth.Visible = false;
+            // 
+            // redTankHealth
+            // 
+            this.redTankHealth.Image = global::Tank_game.Properties.Resources._5_hearts;
+            this.redTankHealth.Location = new System.Drawing.Point(941, 12);
+            this.redTankHealth.Name = "redTankHealth";
+            this.redTankHealth.Size = new System.Drawing.Size(144, 34);
+            this.redTankHealth.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.redTankHealth.TabIndex = 21;
+            this.redTankHealth.TabStop = false;
+            this.redTankHealth.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(221)))), ((int)(((byte)(119)))));
             this.ClientSize = new System.Drawing.Size(1284, 653);
+            this.Controls.Add(this.redTankHealth);
+            this.Controls.Add(this.blueTankHealth);
+            this.Controls.Add(this.redTankHealthLabel);
+            this.Controls.Add(this.blueTankHealthLabel);
             this.Controls.Add(this.power_ups);
             this.Controls.Add(this.box6);
             this.Controls.Add(this.tripleBox1);
@@ -277,6 +342,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.tripleBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.box2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.box3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.blueTankHealth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.redTankHealth)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -300,6 +367,11 @@
         private System.Windows.Forms.PictureBox tripleBox1;
         private System.Windows.Forms.PictureBox box6;
         private System.Windows.Forms.PictureBox power_ups;
+        private System.Windows.Forms.Timer powerUps_Timer;
+        private System.Windows.Forms.Label blueTankHealthLabel;
+        private System.Windows.Forms.Label redTankHealthLabel;
+        private System.Windows.Forms.PictureBox blueTankHealth;
+        private System.Windows.Forms.PictureBox redTankHealth;
     }
 }
 
