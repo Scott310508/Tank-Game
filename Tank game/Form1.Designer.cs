@@ -49,8 +49,10 @@
             this.powerUps_Timer = new System.Windows.Forms.Timer(this.components);
             this.blueTankHealthLabel = new System.Windows.Forms.Label();
             this.redTankHealthLabel = new System.Windows.Forms.Label();
-            this.blueTankHealth = new System.Windows.Forms.PictureBox();
-            this.redTankHealth = new System.Windows.Forms.PictureBox();
+            this.blueTankHealth = new System.Windows.Forms.Label();
+            this.redTankHealth = new System.Windows.Forms.Label();
+            this.bullet2 = new System.Windows.Forms.PictureBox();
+            this.winTitle = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.power_ups)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.box6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tripleBox1)).BeginInit();
@@ -63,8 +65,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tripleBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.box2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.box3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.blueTankHealth)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.redTankHealth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bullet2)).BeginInit();
             this.SuspendLayout();
             // 
             // menu_box
@@ -279,25 +280,53 @@
             // 
             // blueTankHealth
             // 
-            this.blueTankHealth.Image = global::Tank_game.Properties.Resources._5_hearts;
-            this.blueTankHealth.Location = new System.Drawing.Point(167, 12);
+            this.blueTankHealth.AutoSize = true;
+            this.blueTankHealth.BackColor = System.Drawing.Color.Transparent;
+            this.blueTankHealth.Font = new System.Drawing.Font("Pixelify Sans Medium", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.blueTankHealth.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.blueTankHealth.Location = new System.Drawing.Point(156, 12);
             this.blueTankHealth.Name = "blueTankHealth";
-            this.blueTankHealth.Size = new System.Drawing.Size(144, 34);
-            this.blueTankHealth.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.blueTankHealth.Size = new System.Drawing.Size(36, 37);
             this.blueTankHealth.TabIndex = 20;
-            this.blueTankHealth.TabStop = false;
+            this.blueTankHealth.Text = "5";
             this.blueTankHealth.Visible = false;
             // 
             // redTankHealth
             // 
-            this.redTankHealth.Image = global::Tank_game.Properties.Resources._5_hearts;
-            this.redTankHealth.Location = new System.Drawing.Point(941, 12);
+            this.redTankHealth.AutoSize = true;
+            this.redTankHealth.BackColor = System.Drawing.Color.Transparent;
+            this.redTankHealth.Font = new System.Drawing.Font("Pixelify Sans Medium", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.redTankHealth.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.redTankHealth.Location = new System.Drawing.Point(1049, 12);
             this.redTankHealth.Name = "redTankHealth";
-            this.redTankHealth.Size = new System.Drawing.Size(144, 34);
-            this.redTankHealth.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.redTankHealth.Size = new System.Drawing.Size(36, 37);
             this.redTankHealth.TabIndex = 21;
-            this.redTankHealth.TabStop = false;
+            this.redTankHealth.Text = "5";
             this.redTankHealth.Visible = false;
+            // 
+            // bullet2
+            // 
+            this.bullet2.Image = global::Tank_game.Properties.Resources.bullet_horizontal;
+            this.bullet2.Location = new System.Drawing.Point(1124, 314);
+            this.bullet2.Name = "bullet2";
+            this.bullet2.Size = new System.Drawing.Size(29, 8);
+            this.bullet2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.bullet2.TabIndex = 22;
+            this.bullet2.TabStop = false;
+            this.bullet2.Visible = false;
+            // 
+            // winTitle
+            // 
+            this.winTitle.AutoSize = true;
+            this.winTitle.BackColor = System.Drawing.Color.Transparent;
+            this.winTitle.Font = new System.Drawing.Font("Pixelify Sans Medium", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.winTitle.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.winTitle.Location = new System.Drawing.Point(387, 306);
+            this.winTitle.Name = "winTitle";
+            this.winTitle.Size = new System.Drawing.Size(497, 72);
+            this.winTitle.TabIndex = 23;
+            this.winTitle.Text = "Blue tank wins!!";
+            this.winTitle.Visible = false;
             // 
             // Form1
             // 
@@ -305,6 +334,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(221)))), ((int)(((byte)(119)))));
             this.ClientSize = new System.Drawing.Size(1284, 653);
+            this.Controls.Add(this.winTitle);
+            this.Controls.Add(this.bullet2);
             this.Controls.Add(this.redTankHealth);
             this.Controls.Add(this.blueTankHealth);
             this.Controls.Add(this.redTankHealthLabel);
@@ -342,8 +373,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tripleBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.box2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.box3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.blueTankHealth)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.redTankHealth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bullet2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -370,8 +400,10 @@
         private System.Windows.Forms.Timer powerUps_Timer;
         private System.Windows.Forms.Label blueTankHealthLabel;
         private System.Windows.Forms.Label redTankHealthLabel;
-        private System.Windows.Forms.PictureBox blueTankHealth;
-        private System.Windows.Forms.PictureBox redTankHealth;
+        private System.Windows.Forms.Label blueTankHealth;
+        private System.Windows.Forms.Label redTankHealth;
+        private System.Windows.Forms.PictureBox bullet2;
+        private System.Windows.Forms.Label winTitle;
     }
 }
 

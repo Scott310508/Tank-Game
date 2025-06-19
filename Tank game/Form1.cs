@@ -15,24 +15,23 @@ namespace Tank_game
     public partial class Form1 : Form
     {
         //Components' speeds
-        int tankSpeed = 3;
-        int tankboostedSpeed = 10;
+        int tankSpeed = 6;
         int bulletSpeed = 17;
 
         //Components' directions
         string bulletDirection = "";
+        string bullet2Direction = "";
         string blueTankDirection = "";
         string redTankDirection = "right";
 
-        //Player scores
-        int redTankScore = 0;
-        int blueTankScore = 0;
+        //Tanks' health
+        int redTankHealthLeft = 5;
+        int blueTankHealthLeft = 5;
 
         Random randGen = new Random();
-        Random randGen2 = new Random();
         int randValue = 0;
-        int randValue2 = 0;
         float speedBoostDuration = 0f;
+        SoundPlayer player = new SoundPlayer();
 
         //Declaring moving options
         bool wDown = false;
@@ -171,12 +170,6 @@ namespace Tank_game
                 red_dy *= tankSpeed;
             }
 
-            // Move the tank
-            blueTank.Left += blue_dx;
-            blueTank.Top += blue_dy;
-            //redTank.Left += red_dx;
-            //redTank.Top += red_dy;
-
             //Blue tank shooting
             if (shooting == true)
             {
@@ -201,7 +194,31 @@ namespace Tank_game
                 }
             }
 
-            //Remove when bullets go out the screen
+            //Red tank shooting
+            if (shooting2 == true)
+            {
+                switch (bullet2Direction)
+                {
+                    case "up":
+                        bullet2.Image = Resources.bullet_vertical;
+                        bullet2.Top -= bulletSpeed;
+                        break;
+                    case "down":
+                        bullet2.Image = Resources.bullet_vertical;
+                        bullet.Top += bulletSpeed;
+                        break;
+                    case "left":
+                        bullet2.Image = Resources.bullet_horizontal;
+                        bullet2.Left -= bulletSpeed;
+                        break;
+                    case "right":
+                        bullet2.Image = Resources.bullet_horizontal;
+                        bullet2.Left += bulletSpeed;
+                        break;
+                }
+            }
+
+            //Remove when blue tank's bullets go out the screen
             if (bullet.Left > this.Width)
             {
                 bulletDirection = "";
@@ -230,13 +247,40 @@ namespace Tank_game
                 shooting = false;
             }
 
+            //Remove when red tank's bullets go out the screen
+            if (bullet2.Left > this.Width)
+            {
+                bullet2Direction = "";
+                bullet2.Visible = false;
+                shooting2 = false;
+            }
+            if (bullet2.Left < 0)
+            {
+                bullet2Direction = "";
+                bullet2.Location = new Point(redTank.Left, redTank.Top);
+                bullet2.Visible = false;
+                shooting2 = false;
+            }
+            if (bullet2.Top > this.Height)
+            {
+                bullet2Direction = "";
+                bullet2.Location = new Point(redTank.Left, redTank.Top);
+                bullet2.Visible = false;
+                shooting2 = false;
+            }
+            if (bullet2.Top < 0)
+            {
+                bullet2Direction = "";
+                bullet2.Location = new Point(redTank.Left, redTank.Top);
+                bullet2.Visible = false;
+                shooting2 = false;
+            }
+
             //Building obstacles inside the map
             //Collision between blue tank and boxes
             switch (blueTankDirection)
             {
                 case "up":
-                    bullet.Left = blueTank.Left + (blueTank.Width - bullet.Width) / 2;
-                    bullet.Top = blueTank.Top - bullet.Height;
                     if (blueTank.Bounds.IntersectsWith(box1.Bounds) || blueTank.Bounds.IntersectsWith(box2.Bounds) || blueTank.Bounds.IntersectsWith(box3.Bounds)
                     || blueTank.Bounds.IntersectsWith(box4.Bounds) || blueTank.Bounds.IntersectsWith(box5.Bounds) || blueTank.Bounds.IntersectsWith(box6.Bounds)
                     || blueTank.Bounds.IntersectsWith(tripleBox1.Bounds) || blueTank.Bounds.IntersectsWith(tripleBox2.Bounds))
@@ -245,8 +289,6 @@ namespace Tank_game
                     }
                     break;
                 case "down":
-                    bullet.Left = blueTank.Left + (blueTank.Width - bullet.Width) / 2;
-                    bullet.Top = blueTank.Bottom;
                     if (blueTank.Bounds.IntersectsWith(box1.Bounds) || blueTank.Bounds.IntersectsWith(box2.Bounds) || blueTank.Bounds.IntersectsWith(box3.Bounds)
                     || blueTank.Bounds.IntersectsWith(box4.Bounds) || blueTank.Bounds.IntersectsWith(box5.Bounds) || blueTank.Bounds.IntersectsWith(box6.Bounds)
                     || blueTank.Bounds.IntersectsWith(tripleBox1.Bounds) || blueTank.Bounds.IntersectsWith(tripleBox2.Bounds))
@@ -255,8 +297,6 @@ namespace Tank_game
                     }
                     break;
                 case "left":
-                    bullet.Left = blueTank.Left - bullet.Width;
-                    bullet.Top = blueTank.Top + (blueTank.Height - bullet.Height) / 2;
                     if (blueTank.Bounds.IntersectsWith(box1.Bounds) || blueTank.Bounds.IntersectsWith(box2.Bounds) || blueTank.Bounds.IntersectsWith(box3.Bounds)
                     || blueTank.Bounds.IntersectsWith(box4.Bounds) || blueTank.Bounds.IntersectsWith(box5.Bounds) || blueTank.Bounds.IntersectsWith(box6.Bounds)
                     || blueTank.Bounds.IntersectsWith(tripleBox1.Bounds) || blueTank.Bounds.IntersectsWith(tripleBox2.Bounds))
@@ -265,8 +305,6 @@ namespace Tank_game
                     }
                     break;
                 case "right":
-                    //bullet.Left = blueTank.Right;
-                    //bullet.Top = blueTank.Top + (blueTank.Height - bullet.Height) / 2;
                     if (blueTank.Bounds.IntersectsWith(box1.Bounds) || blueTank.Bounds.IntersectsWith(box2.Bounds) || blueTank.Bounds.IntersectsWith(box3.Bounds)
                     || blueTank.Bounds.IntersectsWith(box4.Bounds) || blueTank.Bounds.IntersectsWith(box5.Bounds) || blueTank.Bounds.IntersectsWith(box6.Bounds)
                     || blueTank.Bounds.IntersectsWith(tripleBox1.Bounds) || blueTank.Bounds.IntersectsWith(tripleBox2.Bounds))
@@ -320,28 +358,42 @@ namespace Tank_game
             {
                 bulletDirection = "";
                 bullet.Visible = false;
-               // shooting = false;
+                shooting = false;
+            }
+
+            if (bullet2.Bounds.IntersectsWith(box1.Bounds) || bullet2.Bounds.IntersectsWith(box2.Bounds) || bullet2.Bounds.IntersectsWith(box3.Bounds)
+            || bullet2.Bounds.IntersectsWith(box4.Bounds) || bullet2.Bounds.IntersectsWith(box5.Bounds) || bullet2.Bounds.IntersectsWith(box6.Bounds)
+            || bullet2.Bounds.IntersectsWith(tripleBox1.Bounds) || bullet2.Bounds.IntersectsWith(tripleBox2.Bounds))
+            {
+                bullet2Direction = "";
+                bullet2.Visible = false;
+                shooting2 = false;
             }
 
             //Collision between bullets and tanks
-            for (int i = 0; i <= 5; i++)
+            //Red tank
+            if (bullet.Bounds.IntersectsWith(redTank.Bounds))
             {
-                //if (bullet.Bounds.IntersectsWith(redTank.Bounds))
-                //{
-                //    redTankHealth.Image = Resources.
-                //    //bullet.Visible = false;
-                   
-                //}
-
-                if (bullet.Bounds.IntersectsWith(blueTank.Bounds))
-                {
-                    bullet.Visible = false;
-             //       shooting = false;
-                }
+                redTankHealthLeft--;
+                redTankHealth.Text = $"{redTankHealthLeft}";
+                blueTank.Location = new Point(70, this.Height / 2 - 34);
+                redTank.Location = new Point(820, this.Height / 2 - 34);
+                bullet.Visible = false;
+                shooting = false;
+            }
+            //Blue tank
+            if (bullet2.Bounds.IntersectsWith(blueTank.Bounds))
+            {
+                blueTankHealthLeft--;
+                blueTankHealth.Text = $"{blueTankHealthLeft}";
+                blueTank.Location = new Point(70, this.Height / 2 - 34);
+                redTank.Location = new Point(820, this.Height / 2 - 34);
+                bullet2.Visible = false;
+                shooting2 = false;
             }
 
-            //Power-up features
-            //Speed boosting
+            //Speed boosting power up
+            //Blue tank
             if (blueTank.Bounds.IntersectsWith(power_ups.Bounds))
             {
                 speedBoostDuration += gameTimer.Interval / 1000f;
@@ -349,7 +401,51 @@ namespace Tank_game
                 {
                     tankSpeed = 10;
                 }
-                power_ups.Visible = false;
+                //Move off screen
+                power_ups.Location = new Point(-100, -100);
+            }
+            //Red tank
+            if (redTank.Bounds.IntersectsWith(power_ups.Bounds))
+            {
+                speedBoostDuration += gameTimer.Interval / 1000f;
+                if (speedBoostDuration <= 5f)
+                {
+                    tankSpeed = 10;
+                }
+                //Move off screen
+                power_ups.Location = new Point(-100, -100);
+            }
+
+            if (redTankHealthLeft == 0 || redTankHealthLeft == 0)
+            {
+                //player = new SoundPlayer(Properties.Resources.winner);
+                player.Play();
+                blueTank.Visible = false;
+                redTank.Visible = false;
+                blueTankHealth.Visible = false;
+                redTankHealth.Visible = false;
+                blueTankHealthLabel.Visible = false;
+                redTankHealthLabel.Visible = false;
+                box1.Visible = false;
+                box2.Visible = false;
+                box3.Visible = false;
+                box4.Visible = false;
+                box5.Visible = false;
+                box6.Visible = false;
+                tripleBox1.Visible = false;
+                tripleBox2.Visible = false;
+                gameTimer.Enabled = false;
+                powerUps_Timer.Enabled = false;
+                shooting = false;
+                shooting2 = false;
+                winTitle.Visible = true;
+                
+                if (blueTankHealthLeft == 0)
+                {
+                    winTitle.Text = "Red tank Wins!!";
+                }
+                else winTitle.Text = "Blue tank Wins!!";
+                winTitle.Location = new Point(this.Width / 2 - winTitle.Width / 2, this.Height / 2 - winTitle.Height / 2);
             }
             Refresh();
         }
@@ -359,42 +455,31 @@ namespace Tank_game
         private void powerUps_Timer_Tick(object sender, EventArgs e)
         {
             randValue = randGen.Next(1, 100);
-            randValue2 = randGen2.Next(1, 30);
 
             if ( randValue <= 25 && randValue >= 1)
             {
+                power_ups.Image = Resources.speed_boost;
                 power_ups.Location = new Point(250, 200);
                 power_ups.Visible = true;
             }
             if (randValue <= 50 && randValue >= 26)
             {
+                power_ups.Image = Resources.speed_boost;
                 power_ups.Location = new Point(this.Width / 2 - power_ups.Width / 2, 80);
                 power_ups.Visible = true;
             }
             if (randValue <= 75 && randValue >= 51)
             {
+                power_ups.Image = Resources.speed_boost;
                 power_ups.Location = new Point(this.Width / 2 - power_ups.Width / 2, 400);
                 power_ups.Visible = true;
             }
             if (randValue <= 100 && randValue >= 76)
             {
+                power_ups.Image = Resources.speed_boost;
                 power_ups.Location = new Point(this.Width - 300, this.Height - 250);
                 power_ups.Visible = true;
             }
-
-            if (randValue2 <= 10 && randValue2 >= 1)
-            {
-                power_ups.Image = Resources.shield;
-            }
-            if (randValue2 <= 20 && randValue2 >= 11)
-            {
-                power_ups.Image = Resources.speed_boost;
-            }
-            if (randValue2 <= 30 && randValue2 >= 21)
-            {
-                power_ups.Image = Resources.fast_shooting_rate;
-            }
-
         }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -402,22 +487,18 @@ namespace Tank_game
             {
                 case Keys.W:
                     blueTankDirection = "up";
-                   // bulletDirection = "up";
                     wDown = true;
                     break;
                 case Keys.S:
                     blueTankDirection = "down";
-                  //  bulletDirection = "down";
                     sDown = true;
                     break;
                 case Keys.A:
                     blueTankDirection = "left";
-                  //  bulletDirection = "left";
                     aDown = true;
                     break;
                 case Keys.D:
                     blueTankDirection = "right";
-                  //  bulletDirection = "right";
                     dDown = true;
                     break;
                 case Keys.Up:
@@ -437,6 +518,25 @@ namespace Tank_game
                     rightArrowDown = true;
                     break;
                 case Keys.F:
+                    switch (blueTankDirection)
+                    {
+                        case "up":
+                            bullet.Left = blueTank.Left + (blueTank.Width - bullet.Width) / 2;
+                            bullet.Top = blueTank.Top - bullet.Height;
+                            break;
+                        case "down":
+                            bullet.Left = blueTank.Left + (blueTank.Width - bullet.Width) / 2;
+                            bullet.Top = blueTank.Bottom;
+                            break;
+                        case "left":
+                            bullet.Left = blueTank.Left - bullet.Width;
+                            bullet.Top = blueTank.Top + (blueTank.Height - bullet.Height) / 2;
+                            break;
+                        case "right":
+                            bullet.Left = blueTank.Right;
+                            bullet.Top = blueTank.Top + (blueTank.Height - bullet.Height) / 2;
+                            break;
+                    }
                     if (bulletDirection == "")
                     {
                         bulletDirection = blueTankDirection;
@@ -445,6 +545,30 @@ namespace Tank_game
                     shooting = true;
                     break;
                 case Keys.P:
+                    switch (blueTankDirection)
+                    {
+                        case "up":
+                            bullet2.Left = redTank.Left + (redTank.Width - bullet2.Width) / 2;
+                            bullet2.Top = redTank.Top - bullet2.Height;
+                            break;
+                        case "down":
+                            bullet2.Left = redTank.Left + (redTank.Width - bullet2.Width) / 2;
+                            bullet2.Top = redTank.Bottom;
+                            break;
+                        case "left":
+                            bullet2.Left = redTank.Left - bullet2.Width;
+                            bullet2.Top = redTank.Top + (redTank.Height - bullet2.Height) / 2;
+                            break;
+                        case "right":
+                            bullet2.Left = redTank.Right;
+                            bullet2.Top = redTank.Top + (redTank.Height - bullet2.Height) / 2;
+                            break;
+                    }
+                    if (bullet2Direction == "")
+                    {
+                        bullet2Direction = redTankDirection;
+                    }
+                    bullet2.Visible = true;
                     shooting2 = true;
                     break;
             }
