@@ -152,5 +152,23 @@
   <ItemGroup>
     <None Include="Resources\5_hearts.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\theme_song.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bullet_collision.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tank_explosion.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\winner.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shooting.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\scoring.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

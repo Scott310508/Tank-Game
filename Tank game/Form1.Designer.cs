@@ -115,7 +115,7 @@
             // 
             this.power_ups.BackColor = System.Drawing.Color.Transparent;
             this.power_ups.Image = global::Tank_game.Properties.Resources.speed_boost;
-            this.power_ups.Location = new System.Drawing.Point(1220, 75);
+            this.power_ups.Location = new System.Drawing.Point(1248, 1);
             this.power_ups.Name = "power_ups";
             this.power_ups.Size = new System.Drawing.Size(42, 43);
             this.power_ups.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -150,7 +150,7 @@
             // bullet
             // 
             this.bullet.Image = global::Tank_game.Properties.Resources.bullet_horizontal;
-            this.bullet.Location = new System.Drawing.Point(102, 314);
+            this.bullet.Location = new System.Drawing.Point(-12, 1);
             this.bullet.Name = "bullet";
             this.bullet.Size = new System.Drawing.Size(29, 8);
             this.bullet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -307,7 +307,7 @@
             // bullet2
             // 
             this.bullet2.Image = global::Tank_game.Properties.Resources.bullet_horizontal;
-            this.bullet2.Location = new System.Drawing.Point(1124, 314);
+            this.bullet2.Location = new System.Drawing.Point(1261, 1);
             this.bullet2.Name = "bullet2";
             this.bullet2.Size = new System.Drawing.Size(29, 8);
             this.bullet2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
